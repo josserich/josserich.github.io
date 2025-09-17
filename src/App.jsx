@@ -1,39 +1,28 @@
-import { useState } from "react";
-import { Education, Home, Project, Topbar, Works } from "./components";
-import useInViewObserver from "./hooks/useInObserver";
+import { useRef } from "react";
+import { Topbar, Home, Project, Works, Education } from "./components";
+import useSectionObserver from "./hooks/useInObserver";
 
 function App() {
-  const [homeRef, homeInView] = useInViewObserver();
-  const [projectsRef, projectsInView] = useInViewObserver();
-  const [worksRef, worksInView] = useInViewObserver();
-  const [educationRef, educationInView] = useInViewObserver();
+  const homeRef = useRef(null);
+  const projectsRef = useRef(null);
+  const worksRef = useRef(null);
+  const educationRef = useRef(null);
   return (
     <div className="overflow-x-hidden">
       <Topbar
-        scrollToSection={{
-          homeRef,
-          projectsRef,
-          worksRef,
-          educationRef,
-        }}
-        inViewStatus={{
-          homeInView,
-          projectsInView,
-          worksInView,
-          educationInView,
-        }}
+        scrollToSection={{ homeRef, projectsRef, worksRef, educationRef }}
       />
       <div ref={homeRef}>
         <Home />
       </div>
       <div ref={projectsRef}>
-        <Project inView={projectsInView} />
+        <Project />
       </div>
       <div ref={worksRef}>
-        <Works inView={worksInView} />
+        <Works />
       </div>
       <div ref={educationRef}>
-        <Education inView={educationInView} />
+        <Education />
       </div>
     </div>
   );

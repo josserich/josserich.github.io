@@ -1,21 +1,27 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
-const useInViewObserver = (threshold = 0.3) => {
-  const ref = useRef(null);
-  const [inView, setInView] = useState(false);
-
+export default function useSectionObserver(sectionRefs) {
+  const [activeSection, setActiveSection] = useState("Home");
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
-      { threshold }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.dataset.section);
+          }
+        });
+      },
+      { threshold: 0.5 }
     );
-    if (ref.current) observer.observe(ref.current);
+    sectionRefs.forEach((ref) => {
+      if (ref.current) observer.observe(ref.current);
+    });
     return () => {
-      if (ref.current) observer.unobserve(ref.current);
+      sectionRefs.forEach((ref) => {
+        if (ref.current) observer.unobserve(ref.current);
+      });
     };
-  }, [threshold]);
+  }, [sectionRefs]);
 
-  return [ref, inView];
-};
-
-export default useInViewObserver;
+  return activeSection;
+}

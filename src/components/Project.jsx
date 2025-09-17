@@ -6,74 +6,69 @@ import {
   ExpenseTracker,
 } from "../assets";
 
-const data = [
-  {
-    ProjectId: 1,
-    ProjectName: "Accounting",
-    ProjectImg: Accounting,
-    ProjectDesc:
-      "A desktop apzplication for managing company accounting. It automatically generates financial statements, including the statement of financial position, profit and loss, and changes in equity. Built with Electron, React Router, Tailwind CSS, SQLite3, and a modern UI/UX.",
-  },
-  {
-    ProjectId: 2,
-    ProjectName: "Hospital Information System",
-    ProjectImg: HospitalQueue,
-    ProjectDesc:
-      "A web application designed to manage hospital queues efficiently. Built with React, Express, MongoDB, and a modern UI/UX.",
-  },
-  {
-    ProjectId: 3,
-    ProjectName: "Cafeteria App",
-    ProjectImg: Cafetaria,
-    ProjectDesc:
-      "An Android application for managing cafeteria operations. Built with React Native, Expo Router, Expo SQLite, and a modern UI/UX.",
-  },
-  {
-    ProjectId: 4,
-    ProjectName: "Expense Tracker App",
-    ProjectImg: ExpenseTracker,
-    ProjectDesc:
-      "An Android application for managing personal finances and achieving financial independence. Built with React Native, Expo Router, Expo SQLite, and a modern UI/UX.",
-  },
-];
-const Project = ({ inView }) => {
-  const [hovered, setHovered] = useState(null);
+const Project = () => {
+  const data = [
+    {
+      ProjectId: 1,
+      ProjectName: "Accounting",
+      ProjectImg: Accounting,
+      ProjectDesc:
+        "A desktop application for managing company accounting. It automatically generates financial statements, including the statement of financial position, profit and loss, and changes in equity. Built with Electron, React Router, Tailwind CSS, SQLite3, and a modern UI/UX.",
+    },
+    {
+      ProjectId: 2,
+      ProjectName: "Hospital Information System",
+      ProjectImg: HospitalQueue,
+      ProjectDesc:
+        "A web application designed to manage hospital queues efficiently. Built with React, Express, MongoDB, and a modern UI/UX.",
+    },
+    {
+      ProjectId: 3,
+      ProjectName: "Cafeteria App",
+      ProjectImg: Cafetaria,
+      ProjectDesc:
+        "An Android application for managing cafeteria operations. Built with React Native, Expo Router, Expo SQLite, and a modern UI/UX.",
+    },
+    {
+      ProjectId: 4,
+      ProjectName: "Expense Tracker App",
+      ProjectImg: ExpenseTracker,
+      ProjectDesc:
+        "An Android application for managing personal finances and achieving financial independence. Built with React Native, Expo Router, Expo SQLite, and a modern UI/UX.",
+    },
+  ];
   return (
-    <div
-      className={`mb-6 w-full m-auto min-h-screen transition-all duration-700 ease-in-out
-    ${
-      inView
-        ? "scale-100 translate-x-0 opacity-100"
-        : "scale-0 -translate-x-full opacity-0"
-    } p-5 lg:w-[1000px]`}
-    >
-      <div className="text-center">
-        <div className="inline-block text-5xl font-bold tracking-wider text-center border-b-8 border-b-teal-500 pb-4 text-teal-600">
-          Project
+    <div className="bg-[#F6F8FE] p-5">
+      <div className="w-full lg:m-auto lg:w-[1100px]">
+        <div className="text-4xl font-bold text-[#3357F4] border-b-8 pb-5 inline-block mb-6">
+          My Projects{" "}
         </div>
-      </div>
-      <div className="text-center my-3">
-        // These are my projects using mostly JavaScript //
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        {data.map((el) => (
-          <div
-            key={el.ProjectId}
-            className="relative cursor-pointer"
-            onMouseEnter={() => setHovered(el.ProjectId)}
-            onMouseLeave={() => setHovered(null)}
-          >
-            <img src={el.ProjectImg} alt="" className="w-full" />
-            <div
-              className={`bg-slate-800/90 p-5 text-white absolute inset-0 transition-all duration-300 ${
-                hovered === el.ProjectId ? "opacity-100" : "opacity-0"
-              } overflow-y-auto`}
-            >
-              <div className="text-xl font-bold mb-3">{el.ProjectName}</div>
-              <div className="text-sm">{el.ProjectDesc}</div>
-            </div>
+        <div className="text-xl italic mb-6">
+          " Software that helps me work, Software is just a tool that makes a
+          product useful depending on ideas, innovation and creativity. "People{" "}
+          <span className="font-bold">don't care about what you say</span>,
+          <span className="font-bold"> they care about </span>{" "}
+          <span className="font-bold text-[#3357F4]">what you build.</span>"
+           Mark Zuckerberg.
+        </div>
+        <div className="w-full lg:w-[860px] lg:m-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {data.map((item, i) => (
+              <div
+                className="p-3 bg-white rounded-2xl shadow-lg hover:-translate-y-20 hover:scale-110 cursor-pointer duration-300 ease-in-out"
+                key={i}
+              >
+                <img src={item.ProjectImg} alt="" className="mb-3" />
+                <div className="p-4">
+                  <div className="font-bold text-3xl tracking-wider mb-3">
+                    {item.ProjectName}
+                  </div>
+                  <div className="text-lg mb-5">{item.ProjectDesc}</div>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );
