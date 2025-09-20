@@ -12,7 +12,7 @@ const Home = () => {
   ];
   return (
     <div className="pt-[130px] mb-12 p-5">
-      <div className="sm:w-full lg:w-[1024px] lg:m-auto flex flex-wrap lg:flex-nowrap justify-center gap-12 items-center">
+      <div className="sm:w-full lg:w-[1024px] lg:m-auto flex flex-wrap lg:flex-nowrap md:justify-center gap-12 items-center">
         <div>
           <div className="text-xl font-bold mb-3">
             Hello, I'm Josse Surya Pinem
@@ -51,7 +51,7 @@ const Home = () => {
         <img
           src={Hero}
           alt="josse-surya-pinem"
-          className="w-[470px] h-[500px] rounded-3xl shadow-xl"
+          className="w-[470px] h-auto rounded-3xl shadow-xl"
         />
       </div>
     </div>

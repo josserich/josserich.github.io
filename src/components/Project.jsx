@@ -14,6 +14,7 @@ const Project = () => {
       ProjectImg: Accounting,
       ProjectDesc:
         "A desktop application for managing company accounting. It automatically generates financial statements, including the statement of financial position, profit and loss, and changes in equity. Built with Electron, React Router, Tailwind CSS, SQLite3, and a modern UI/UX.",
+      link: "https://youtube.com/shorts/VqPFYO2W0xE?si=y78m9z2orsu8Vji3",
     },
     {
       ProjectId: 2,
@@ -21,6 +22,7 @@ const Project = () => {
       ProjectImg: HospitalQueue,
       ProjectDesc:
         "A web application designed to manage hospital queues efficiently. Built with React, Express, MongoDB, and a modern UI/UX.",
+      link: "https://youtu.be/JxsDRc8bvQI?si=gMSvuI-uIhJC7uT-",
     },
     {
       ProjectId: 3,
@@ -28,6 +30,7 @@ const Project = () => {
       ProjectImg: Cafetaria,
       ProjectDesc:
         "An Android application for managing cafeteria operations. Built with React Native, Expo Router, Expo SQLite, and a modern UI/UX.",
+      link: "https://youtu.be/NAv_KFNPOC8?si=vRfW0gy93gZPq_6D",
     },
     {
       ProjectId: 4,
@@ -35,6 +38,7 @@ const Project = () => {
       ProjectImg: ExpenseTracker,
       ProjectDesc:
         "An Android application for managing personal finances and achieving financial independence. Built with React Native, Expo Router, Expo SQLite, and a modern UI/UX.",
+      link: "https://youtu.be/xD65xhYqyLw?si=e6x7F8SispUnOxiS",
     },
   ];
   return (
@@ -57,6 +61,7 @@ const Project = () => {
               <div
                 className="p-3 bg-white rounded-2xl shadow-lg hover:-translate-y-20 hover:scale-110 cursor-pointer duration-300 ease-in-out"
                 key={i}
+                onClick={() => window.open(item.link, "_blank")}
               >
                 <img src={item.ProjectImg} alt="" className="mb-3" />
                 <div className="p-4">
