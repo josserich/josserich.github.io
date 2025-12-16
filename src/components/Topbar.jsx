@@ -2,39 +2,26 @@ import { useEffect, useState } from "react";
 import { Josse } from "../assets";
 import TopBarResponsive from "./TopBarResponsive";
 
-const Topbar = ({ scrollToSection }) => {
-  const { homeRef, projectsRef, worksRef, educationRef } = scrollToSection;
-  // active menu
-  const [active, setActive] = useState("Home");
-  const menuItems = [
-    { name: "Home", ref: homeRef },
-    { name: "Projects", ref: projectsRef },
-    { name: "Works", ref: worksRef },
-    { name: "Education", ref: educationRef },
-  ];
+const Topbar = (props) => {
+  const { menuItems, active, setActive } = props;
   // scroll ke section
   const handleScrollTo = (ref, name) => {
-    if (ref?.current) {
-      const offsetTop = ref.current.offsetTop - 80;
-      window.scrollTo({ top: offsetTop, behavior: "smooth" });
-      setActive(name);
+    const offsetTop = ref.current?.offsetTop - 80;
+    window.scrollTo({ top: offsetTop, behavior: "smooth" });
+    setActive(name);
+  };
+  const handleScroll = () => {
+    const scrollPos = window.scrollY + 80 + 1;
+    for (let i = menuItems.length - 1; i >= 0; i--) {
+      const section = menuItems[i].ref.current;
+      if (!section) continue;
+      if (scrollPos >= section.offsetTop - 300) {
+        setActive(menuItems[i].name);
+        break;
+      }
     }
   };
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPos = window.scrollY + 80;
-      for (let i = 0; i < menuItems.length; i++) {
-        const sec = menuItems[i];
-        if (sec.ref.current) {
-          const top = sec.ref.current.offsetTop;
-          const bottom = top + sec.ref.current.offsetHeight;
-          if (scrollPos >= top && scrollPos < bottom) {
-            setActive(sec.name);
-            break;
-          }
-        }
-      }
-    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);

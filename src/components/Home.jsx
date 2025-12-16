@@ -2,16 +2,16 @@ import { Hero, Linkedin, Tiktok, Whatsapp, Youtube } from "./../assets";
 
 const Home = () => {
   const socialMedia = [
-    { icon: Youtube, link: " https://www.youtube.com/@codewithjoee " },
+    { icon: Youtube, link: "https://www.youtube.com/@codewithjoee" },
     {
       icon: Linkedin,
-      link: "https://www.linkedin.com/in/josse-pinem-61a358178/",
+      link: "https://www.linkedin.com/in/josse-dev/",
     },
-    { icon: Tiktok, link: "" },
+    { icon: Tiktok, link: "https://www.tiktok.com/@jossepinem" },
     { icon: Whatsapp, link: "https://wa.link/2s7u5m" },
   ];
   return (
-    <div className="pt-[130px] mb-12 p-5">
+    <div className="pt-[110px] mb-12 p-5">
       <div className="sm:w-full lg:w-[1024px] lg:m-auto flex flex-wrap lg:flex-nowrap md:justify-center gap-12 items-center">
         <div>
           <div className="text-xl font-bold mb-3">
@@ -37,13 +37,15 @@ const Home = () => {
                 key={index}
                 src={item.icon}
                 alt={item.link}
-                className={`w-[46px] h-[40px] cursor-pointer hover:scale-110 hover:translate-y-[-15px] duration-300`}
+                className={`${
+                  index === 0 ? "w-[52px]" : "w-[40px]"
+                } h-[40px] cursor-pointer hover:scale-110 hover:translate-y-[-15px] duration-300`}
                 onClick={() => window.open(item.link, "_blank")}
               />
             ))}
           </div>
-          <div>
-            <button className="bg-[#3357F4] px-5 py-3 text-white cursor-pointer font-black rounded-lg text-2xl tracking-widest">
+          <div onClick={() => window.open(socialMedia[3].link, "_blank")}>
+            <button className="bg-[#3357F4] px-5 py-3 text-white font-black rounded-lg text-2xl tracking-widest cursor-pointer hover:scale-110 hover:translate-y-[-15px] duration-300">
               HIRE ME !{" "}
             </button>
           </div>
