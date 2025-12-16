@@ -45,7 +45,7 @@ const Home = () => {
             ))}
           </div>
           <div onClick={() => window.open(socialMedia[3].link, "_blank")}>
-            <button className="bg-[#3357F4] px-5 py-3 text-white font-black rounded-lg text-2xl tracking-widest cursor-pointer hover:scale-110 hover:translate-y-[-15px] duration-300">
+            <button className="bg-[#3357F4] px-5 py-3 text-white font-black rounded-lg text-2xl tracking-widest cursor-pointer hover:scale-110 hover:translate-y-[-18px] duration-300">
               HIRE ME !{" "}
             </button>
           </div>
